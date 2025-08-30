@@ -78,7 +78,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 100px 30px 0 30px;
+  padding: 60px 30px 0 30px;
   box-sizing: border-box;
 }
 
@@ -154,6 +154,10 @@ body {
 }
 
 @media only screen and (max-width: 734px) {
+  .welcomeContainer {
+    padding: 45px 30px 0 30px;
+  }
+
   .welcomeAnimationText {
     font-size: 21px;
   }
