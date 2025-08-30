@@ -23,8 +23,6 @@ async function displayFreeEpicGames(data) {
     let normalPrice = game.normalPrice;
     let rating = game.steamRatingText;
 
-    let gameCover = await getGameCover(gameTitle);
-
     const gameCard = document.createElement("a");
     gameCard.classList.add("gameCard");
     gameCard.href = `https://www.cheapshark.com/redirect?dealID=${dealID}`;
@@ -40,20 +38,6 @@ async function displayFreeEpicGames(data) {
             `;
 
     freeGamesList.appendChild(gameCard);
-  }
-}
-
-async function getGameCover(gameName) {
-  try {
-    const res = await fetch("/.netlify/functions/getGameCover", {
-      method: "POST",
-      body: JSON.stringify({ gameName }),
-    });
-    const data = await res.json();
-    return data.coverUrl;
-  } catch (err) {
-    console.error("Error fetching IGDB cover:", err);
-    return null;
   }
 }
 
