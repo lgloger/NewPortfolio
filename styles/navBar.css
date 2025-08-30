@@ -9,6 +9,7 @@
   position: fixed;
   bottom: 30px; /* 30 */
   gap: 8px;
+  z-index: 9999;
 }
 
 .glassEffectLogo {
