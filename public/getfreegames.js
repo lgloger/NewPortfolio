@@ -1,5 +1,4 @@
 const api = "https://www.cheapshark.com/api/1.0/deals?storelD=25&upperPrice=0";
-import { CLIENT_ID, TOKEN } from "../igdbApi.js";
 
 async function getfreeGames() {
   try {
