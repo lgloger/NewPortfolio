@@ -23,13 +23,14 @@ async function displayFreeEpicGames(data) {
     let normalPrice = game.normalPrice;
     let rating = game.steamRatingText || "N/A";
 
-    getGameCovers(gameTitle);
+    let gameCover = await getGameCovers(gameTitle);
 
     const gameCard = document.createElement("a");
     gameCard.classList.add("gameCard");
     gameCard.href = `https://www.cheapshark.com/redirect?dealID=${dealID}`;
     gameCard.innerHTML = `
-            <img src="${gameThumb}" alt="${gameTitle}" class="gameThumb"/>
+            <div class="fadeOverlay"></div>
+            <img src="${gameCover}" alt="${gameTitle}" class="gameThumb"/>
             <div class="gameInfo">
                 <span class="gameTitle">${gameTitle}</span>
                 <div class="InfoText">
@@ -45,13 +46,13 @@ async function displayFreeEpicGames(data) {
 
 async function getGameCovers(gameTitle) {
   const API_KEY = "f65fe027f8e64638887cae7e3c94d363";
-  const url = `https://api.rawg.io/api/games?search=${encodeURIComponent(gameTitle)}&${API_KEY}`;
+  const url = `https://corsproxy.io/https://api.rawg.io/api/games?search=${encodeURIComponent(gameTitle)}&key=${API_KEY}`;
 
   try {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log(data);
+    return data.results[0].background_image;
   } catch (error) {
     console.error("Error fetching game cover:", error);
     return null;

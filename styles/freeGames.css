@@ -110,7 +110,7 @@ body {
 }
 
 .gameCard {
-  width: 400px;
+  width: 185px;
   height: auto;
   display: flex;
   align-items: center;
@@ -118,46 +118,64 @@ body {
   flex-direction: column;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
-  box-shadow: 2px 4px 12px var(--gamesCard-box-shadow);
-  background-color: var(--info-container-color);
-  border-radius: 18px;
+  /* box-shadow: 2px 4px 12px var(--gamesCard-box-shadow); */
+  border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
 }
 
 .gameCard:hover {
-  box-shadow: 2px 4px 16px var(--gamesCard-box-shadow-hover);
+  /* box-shadow: 2px 4px 16px var(--gamesCard-box-shadow-hover); */
   transform: scale3d(1.01, 1.01, 1.01);
 }
 
-.gameThumb {
+.fadeOverlay {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  height: 150px;
+  height: 55%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0)
+  );
+  pointer-events: none;
+}
+
+.gameThumb {
+  width: 185px;
+  height: 246px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .gameInfo {
   width: 100%;
   height: auto;
   display: flex;
-  align-items: startce;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   box-sizing: border-box;
-  padding: 30px;
+  position: absolute;
+  bottom: 10px;
 }
 
 .gameTitle {
   font-size: 17px;
   font-weight: 600;
   color: var(--primary-text-color);
+  width: 85%;
 }
 
 .InfoText {
   font-size: 14px;
   font-weight: 400;
   color: var(--primary-text-color);
+  width: 85%;
 }
 
 .normalGamePrice {
