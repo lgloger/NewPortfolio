@@ -1,5 +1,5 @@
 const api = "https://www.cheapshark.com/api/1.0/deals?storelD=25&upperPrice=0";
-import { CLIENT_ID, TOKEN } from "./igdbApi.js";
+import { CLIENT_ID, TOKEN } from "../igdbApi.js";
 
 async function getfreeGames() {
   try {
@@ -24,7 +24,7 @@ async function displayFreeEpicGames(data) {
     let normalPrice = game.normalPrice;
     let rating = game.steamRatingText;
 
-    let gameCover = await getGameIcon(gameTitle);
+    let gameCover = await getGameCover(gameTitle);
 
     const gameCard = document.createElement("a");
     gameCard.classList.add("gameCard");
@@ -44,42 +44,18 @@ async function displayFreeEpicGames(data) {
   }
 }
 
-async function getGameIcon(gameName) {
-  async function getGameId(name) {
-    const res = await fetch("https://api.igdb.com/v4/games", {
+async function getGameCover(gameName) {
+  try {
+    const res = await fetch("/.netlify/functions/getGameCover", {
       method: "POST",
-      headers: {
-        "Client-ID": CLIENT_ID,
-        Authorization: `Bearer ${TOKEN}`,
-        Accept: "application/json",
-      },
-      body: `fields id,name; search "${name}"; limit 1;`,
+      body: JSON.stringify({ gameName }),
     });
     const data = await res.json();
-    return data[0]?.id;
+    return data.coverUrl;
+  } catch (err) {
+    console.error("Error fetching IGDB cover:", err);
+    return null;
   }
-
-  async function getGameCover(gameId) {
-    const res = await fetch("https://api.igdb.com/v4/covers", {
-      method: "POST",
-      headers: {
-        "Client-ID": CLIENT_ID,
-        Authorization: `Bearer ${TOKEN}`,
-        Accept: "application/json",
-      },
-      body: `fields url; where game = ${gameId};`,
-    });
-    const data = await res.json();
-    return data[0]?.url ? `https:${data[0].url}` : null;
-  }
-
-  (async () => {
-    const gameId = await getGameId(gameName);
-    if (!gameId) return console.log("Spiel nicht gefunden");
-
-    const coverUrl = await getGameCover(gameId);
-    console.log(coverUrl);
-  })();
 }
 
 getfreeGames();
