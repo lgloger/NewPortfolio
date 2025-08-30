@@ -23,6 +23,8 @@ async function displayFreeEpicGames(data) {
     let normalPrice = game.normalPrice;
     let rating = game.steamRatingText || "N/A";
 
+    getGameCovers(gameTitle);
+
     const gameCard = document.createElement("a");
     gameCard.classList.add("gameCard");
     gameCard.href = `https://www.cheapshark.com/redirect?dealID=${dealID}`;
@@ -38,6 +40,21 @@ async function displayFreeEpicGames(data) {
             `;
 
     freeGamesList.appendChild(gameCard);
+  }
+}
+
+async function getGameCovers(gameTitle) {
+  const API_KEY = "f65fe027f8e64638887cae7e3c94d363";
+  const url = `https://api.rawg.io/api/games?search=${encodeURIComponent(gameTitle)}&${API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching game cover:", error);
+    return null;
   }
 }
 
