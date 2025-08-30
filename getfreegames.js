@@ -21,7 +21,7 @@ async function displayFreeEpicGames(data) {
     let gameTitle = game.title;
     let gameThumb = game.thumb;
     let normalPrice = game.normalPrice;
-    let rating = game.steamRatingText;
+    let rating = game.steamRatingText || "N/A";
 
     const gameCard = document.createElement("a");
     gameCard.classList.add("gameCard");
