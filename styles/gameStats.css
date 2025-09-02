@@ -86,9 +86,32 @@ body {
   font-weight: 600;
   line-height: 60px;
   text-align: left;
-  color: var(--primary-text-color);
+  /* color: var(--primary-text-color); */
   padding-top: 10px;
-  width: 940px;
+  width: 100%;
+  max-width: 940px;
+
+  background-image: linear-gradient(
+    90deg,
+    #304cca,
+    #2596d6 33.33%,
+    #304cca 70%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-position: 0% 0;
+  background-size: 200% 100%;
+  color: transparent;
+  animation: gradient-animation 3s ease forwards;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 115% 0;
+  }
+  100% {
+    background-position: -10% 0;
+  }
 }
 
 .gameStatsList {
@@ -102,105 +125,64 @@ body {
   flex-wrap: wrap;
 }
 
-.StatsList {
-  width: 940px;
+.mostPlayedSteamTable {
   height: auto;
+  width: 940px;
   background-color: var(--info-container-color);
   border-radius: 14px;
   overflow: hidden;
+  border-collapse: collapse;
 }
 
-.ListHeader {
+.tableHeader {
   height: 35px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   background-color: #373739;
+}
+
+.tableHeaderText {
   font-size: 14px;
   font-weight: 600;
   text-align: left;
+  padding: 0 10px 0 10px;
   color: var(--primary-text-color);
 }
 
-.headerRank,
-.gameRank {
-  padding-left: 10px;
-  width: 196.66px;
+.noGame {
+  display: revert;
 }
 
-.headerName {
-  display: flex;
+.game {
+  display: none;
 }
 
-.headerCurrentPlayers {
-  padding-left: calc(50% - 166.66px + 15px);
-}
-
-.gameElement {
+.tableContent {
   height: 40px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   border-top: 0.5px solid #2e2e31;
 }
 
-.gameRank {
+.tableContentText {
   font-size: 14px;
   font-weight: 400;
   text-align: left;
+  padding: 0 10px 0 10px;
   color: var(--primary-text-color);
-  width: 80px;
 }
 
-.gameImageNameContainer {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: rgba(127, 255, 212, 0.113);
-  gap: 10px;
+.tableContentCP {
+  color: #2596d6;
+  font-weight: 600;
 }
 
-.gameImage {
+.tableContentImageCon {
   height: 100%;
   width: auto;
 }
 
-.gameName {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--primary-text-color);
-  text-align: left;
-}
-
-.gamePlayersContainer {
+.tableContentImage {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  flex: 1;
-}
-
-.currentPlayers {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--primary-text-color);
-  text-align: left;
-  padding-left: 10px;
-  width: 50%;
-}
-
-.gamePlayers {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--primary-text-color);
-  text-align: left;
-  padding-left: 10px;
-  width: 50%;
+  width: 107px;
+  object-fit: cover;
+  display: block;
 }
 
 /* ---------- Responsive ---------- */
@@ -229,20 +211,22 @@ body {
   }
 }
 
-@media only screen and (max-width: 630px) {
-  .headerName {
+@media only screen and (max-width: 580px) {
+  .tableHeaderName,
+  .tableContentName {
     display: none;
   }
 
-  .gameName {
+  .tableHeaderRank,
+  .tableContentRank {
     display: none;
   }
 
-  .gameImageNameContainer {
-    width: auto;
+  .noGame {
+    display: none;
   }
 
-  .headerCurrentPlayers {
-    padding-left: 0;
+  .game {
+    display: revert;
   }
 }

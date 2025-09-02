@@ -118,16 +118,16 @@
     <div class="gamesContainer">
       <span class="titleText">Most Played Steam Games</span>
       <div class="gameStatsList">
-        <div class="StatsList" id="SteamList">
-          <div class="ListHeader">
-            <span class="headerRank">Rank</span>
-            <span class="headerName">Name</span>
-            <!-- <div class="headerPlayersCon"> -->
-              <span class="headerCurrentPlayers">Current</span>
-              <span class="headerPlayers">All-Time Peak</span>
-            <!-- </div> -->
-          </div>
-        </div>
+        <table class="mostPlayedSteamTable" id="mostPlayedSteamTable">
+          <tr class="tableHeader">
+            <th class="tableHeaderText tableHeaderRank">Rank</th>
+            <th class="tableHeaderText noGame"></th>
+            <th class="tableHeaderText game">Game</th>
+            <th class="tableHeaderText tableHeaderName">Name</th>
+            <th class="tableHeaderText">Current</th>
+            <th class="tableHeaderText">All-Time Peak</th>
+          </tr>
+        </table>
       </div>
     </div>
   </body>

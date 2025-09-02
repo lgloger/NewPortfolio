@@ -60,7 +60,6 @@ body {
   background-color: var(--info-container-color);
   padding: 20px 60px;
   box-sizing: border-box;
-  /* position: fixed; */
 }
 
 .infoText {

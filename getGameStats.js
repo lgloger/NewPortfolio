@@ -13,34 +13,30 @@ async function getGameStats() {
 }
 
 async function displayGameStats(data) {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 65; i++) {
     const game = data.response.ranks[i];
 
     const rank = game.rank;
     const appId = game.appid;
     const playersPeak = game.peak_in_game;
-    const currentPlayers = await getAppCurrentPlayers(appId);
+    const currentPlayers = await getAppCurrentPlayers(appId) || "no data";
 
     const gameDetails = await getAppDetails(appId);
     const gameName = gameDetails[appId].data.name || "Unknown Game";
     const gameImage = gameDetails[appId].data.capsule_imagev5;
 
-    const SteamList = document.getElementById("SteamList");
-    const gameElement = document.createElement("div");
-    gameElement.classList.add("gameElement");
-    gameElement.innerHTML = `
-            <span class="gameRank">${rank}.</span>
-            <div class="gameImageNameContainer">
-                <img class="gameImage" src="${gameImage}" alt="${gameName}" />
-                <span class="gameName">${gameName}</span>
-            </div>
-            <div class="gamePlayersContainer">
-                <span class="currentPlayers">${currentPlayers.toLocaleString()}</span>
-                <span class="gamePlayers">${playersPeak.toLocaleString()}</span>
-            </div>
+    const mostPlayedSteamTable = document.getElementById("mostPlayedSteamTable");
+    const tableContent = document.createElement("tr");
+    tableContent.classList.add("tableContent");
+    tableContent.innerHTML = `
+            <td class="tableContentText tableContentRank">${rank}.</td>
+            <td class="tableContentImageCon"><img class="tableContentImage" src="${gameImage}" alt="${gameName}" /></td>
+            <td class="tableContentText tableContentName">${gameName}</td>
+            <td class="tableContentText tableContentCP">${currentPlayers.toLocaleString()}</td>
+            <td class="tableContentText">${playersPeak.toLocaleString()}</td>
         `;
 
-    SteamList.appendChild(gameElement);
+    mostPlayedSteamTable.appendChild(tableContent);
   }
 }
 
