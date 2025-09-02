@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quantum Group - Free Games</title>
+    <title>Quantum Group - Game Stats</title>
     <link rel="icon" href="assets/logo/favicon.png" />
-    <link rel="stylesheet" href="styles/freeGames.css" />
+    <link rel="stylesheet" href="styles/gameStats.css" />
     <link rel="stylesheet" href="styles/navBar.css" />
 
-    <script type="module" src="getfreegames.js" defer></script>
+    <script type="module" src="getGameStats.js" defer></script>
     <script src="scrollAnimation.js" defer></script>
   </head>
   <body>
@@ -80,7 +80,7 @@
         </a>
       </div>
       <div class="glassEffect">
-        <a href="index.html" class="glassEffectButton">
+        <a href="gameStats.html" class="glassEffectButton">
           <svg
             class="glassIconHeader"
             xmlns="http://www.w3.org/2000/svg"
@@ -91,10 +91,7 @@
             />
           </svg>
         </a>
-        <a
-          href="freegames.html"
-          class="glassEffectButton"
-        >
+        <a href="freegames.html" class="glassEffectButton">
           <svg
             class="glassIconHeader"
             xmlns="http://www.w3.org/2000/svg"
@@ -119,8 +116,19 @@
       </div>
     </div>
     <div class="gamesContainer">
-      <span class="titleText">Free Epic Games</span>
-      <div class="freeGamesList"></div>
+      <span class="titleText">Most Played Steam Games</span>
+      <div class="gameStatsList">
+        <div class="StatsList" id="SteamList">
+          <div class="ListHeader">
+            <span class="headerRank">Rank</span>
+            <span class="headerName">Name</span>
+            <!-- <div class="headerPlayersCon"> -->
+              <span class="headerCurrentPlayers">Current</span>
+              <span class="headerPlayers">All-Time Peak</span>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
