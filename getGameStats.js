@@ -31,7 +31,7 @@ async function displayGameStats(data) {
     tableContent.innerHTML = `
             <td class="tableContentText tableContentRank">${rank}.</td>
             <td class="tableContentImageCon"><img class="tableContentImage" src="${gameImage}" alt="${gameName}" /></td>
-            <td class="tableContentText tableContentName">${gameName}</td>
+            <td class="tableContentText tableContentName"><a href="https://store.steampowered.com/app/${appId}" class="tableContentLink">${gameName}</a></td>
             <td class="tableContentText tableContentCP">${currentPlayers.toLocaleString()}</td>
             <td class="tableContentText">${playersPeak.toLocaleString()}</td>
         `;
