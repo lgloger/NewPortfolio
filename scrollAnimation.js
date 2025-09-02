@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   addEventListener("scroll", () => {
     let currentScrollY = window.scrollY;
 
-    glassEffectLogo.classList.add("glassEffectLogoAnimation");
-    glassEffectCon.classList.add("glassEffectAnimation");
-
-    if (currentScrollY < lastScrollY) {
+    if (currentScrollY > lastScrollY) {
       glassEffectLogo.classList.remove("glassEffectLogoAnimationOut");
       glassEffectCon.classList.remove("glassEffectAnimationOut");
       glassEffectLogo.classList.add("glassEffectLogoAnimation");
